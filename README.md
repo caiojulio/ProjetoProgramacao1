@@ -8,6 +8,6 @@ Caio Julio Santos da Silva 202204940023.
 
 Heloisa
 
-Jose
+José Gabriel Silva Pereira 202204940012.
 
 Yuri
