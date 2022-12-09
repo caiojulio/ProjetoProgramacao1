@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/home/zebiso/Área de Trabalho/sqfletcont/env/bin/python3" "$0" "$@"
+'''exec' "/home/zebiso/Área de Trabalho/Projeto_Prog/env/bin/python3" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re

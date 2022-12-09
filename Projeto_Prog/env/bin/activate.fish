@@ -30,7 +30,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/zebiso/Área de Trabalho/sqfletcont/env"
+set -gx VIRTUAL_ENV "/home/zebiso/Área de Trabalho/Projeto_Prog/env"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

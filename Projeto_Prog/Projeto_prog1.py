@@ -11,14 +11,16 @@ def main(page):  # funçao principal do flet
     dict_values= {
         'usuario': '',
         'email': '',
-        'senha': ''
+        'senha': '',
+        'usuariolog':'',
+        'senhalog':''
     }
-    def gera_registro(e): # função que vai estar no on_click
+    def gera_registro(e): # função que vai estar no on_click do registro 
         dict_values['usuario']= usuario.value 
         dict_values['email']= email.value 
         dict_values['senha']= senha.value
         
-        for val in dict_values.values (): # checa se foi tudo preenchido pelo usuário
+        for val in dict_values['usuario']and dict_values['email'] and dict_values['senha'] : # checa se foi tudo preenchido pelo usuário
             if not val: 
                 page.banner.open=True
                 page.update()
@@ -42,7 +44,7 @@ def main(page):  # funçao principal do flet
     page.banner=ft.Banner(
         bgcolor=ft.colors.AMBER_100,
         leading=ft.Icon(
-            ft.icons.DANGEROUS_SHARP,
+            ft.icons.DANGEROUS_SHARP,                   
             color=ft.colors.RED_400,
             size=40
         ),
@@ -56,29 +58,44 @@ def main(page):  # funçao principal do flet
     )
 
     titulo= ft.Text(value='Registrar Usuário', size=20, weight='bold')
-    usuario= ft.TextField(label='Nome de Usuário',)
+    usuario= ft.TextField(label='Nome de Usuário')
     email=ft.TextField(label='Email', autofocus=True)
     senha=ft.TextField(label='Senha',password=True, can_reveal_password=True)
-    
-
+    titulolog=ft.Text(value='Login', size=20,weight='bold')
+    usuariolog=ft.TextField(label='Nome de Usuário')
+    senhalog=ft.TextField(label='Senha', password=True, can_reveal_password=True)
     botao_gerar=ft.FilledButton(text='Registrar', on_click=gera_registro)
+    botao_gerarlog=ft.FilledButton(text='Entrar')
 
     page.add(
         ft.Row(
-            controls=[titulo]
-        ),
-        ft.Row(
-            controls=[email]
-        ),
-        ft.Row(
-            controls=[usuario]
-        ),
-        ft.Row(
-            controls=[senha]
-        ),
-        ft.Row(
-            controls=[botao_gerar]
-        )
-    )
-
+            controls=[
+                ft.Container(
+                    expand=1,
+                    alignment=ft.alignment.center_right,
+                    content=ft.Column(
+                        controls=[
+                            ft.Row(controls=[titulo]),
+                            ft.Row(controls=[email]),
+                            ft.Row(controls=[usuario]),
+                            ft.Row(controls=[senha]),
+                            ft.Row(controls=[botao_gerar]),
+                        ],
+                    ),
+                ),
+                ft.Container(
+                    expand=1,
+                    alignment=ft.alignment.center_left,
+                    content=ft.Column(
+                        controls=[
+                            ft.Row(controls=[titulolog]),
+                            ft.Row(controls=[usuariolog]),
+                            ft.Row(controls=[senhalog]),
+                            ft.Row(controls=[botao_gerarlog]),
+                        ]
+                    )
+                )
+            ]
+        ))
+  
 ft.app(target=main)
