@@ -3,7 +3,7 @@ import flet as ft
 
 #banco=sqlite3.connect ('banco_projeto.db') # para criar o banco de dados
 #cursor=banco.cursor()
-#cursor.execute("CREATE TABLE usuarios (email text, usuario text, senha text) ")
+#cursor.execute("CREATE TABLE usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT,email text, usuario text, senha text) ")
 
 def main(page):  # funçao principal do flet
     page.title= "Criptografia de arquivo"
@@ -16,10 +16,10 @@ def main(page):  # funçao principal do flet
     dict_valueslog={'usuariolog':'',
                     'senhalog':''}
 
-    def nova_aba(e): #recarrega os elementos da pagina
+    def nova_aba(e): #recarrega os elementos da pagina para o registro
         page.clean()
 
-        def registrar(e): # vai estar bo on_click para registrar novos usuarios apartir do input
+        def registrar(e): # vai estar no on_click para registrar novos usuarios apartir do input
             dict_values['usuario']= usuario.value 
             dict_values['email']= email.value 
             dict_values['senha']= senha.value
@@ -37,7 +37,7 @@ def main(page):  # funçao principal do flet
 
             banco=sqlite3.connect ('banco_projeto.db') # coloca o que foi digitado no banco de dados
             cursor=banco.cursor()
-            cursor.execute("INSERT INTO usuarios VALUES ('"+emailb+"','"+usuariob+"','"+senhab+"' )")
+            cursor.execute("INSERT INTO usuarios VALUES (NULL,'"+emailb+"','"+usuariob+"','"+senhab+"' )")
             banco.commit()
             print (dict_values)
         
